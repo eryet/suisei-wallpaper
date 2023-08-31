@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suisei Wallpaper</title>
+    <script src="javascript/parallax.js"></script>
+    <link rel='stylesheet' href='css/rgbanimation.css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="suisei">
+        <img class="suisei zi200" src="images/suisei_layer_2.png"></img>
+        <div id="rgbContainer"></div>
+        <div class="zi150" id="scene1">
+            <div class="layer" data-depth=".4">
+                <img id ="planet" class="suisei" src="images/planet.png"></img>
+            </div>
+        </div>
+        <canvas class="zi100" id="particleCanvas"></canvas>
+    </div>
+</body>
+<script src="javascript/properties.js"></script>
+<script src="javascript/stars.js"></script>
+<script src="javascript/space.js"></script>
+<script src="javascript/twinkle.js"></script>
+<script src="javascript/wallpaperengine.js"></script>
+
+<script>
+    var scene1 = document.getElementById("scene1");
+    var parallaxInstance1 = new Parallax(scene1);
+</script>
+</html>
