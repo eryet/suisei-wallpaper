@@ -18,7 +18,7 @@ function animateCoolStar() {
   mouseX = centerX;
   mouseY = centerY;
 
-  for (var i = 0, p; i < PARTICLE_NUM; i++) {
+  for (var i = 0; i < PARTICLE_NUM; i++) {
     particles[i] = randomizeParticle(new Particle());
     particles[i].z -= 500 * Math.random();
   }
@@ -228,8 +228,8 @@ window.wallpaperPropertyListener = {
       shootingstarnumber = properties.shootingstarnumber.value;
       starUpdate();
     }
-    if (properties.starsize) {
-      starsize = properties.starsize.value;
+    if (properties.STARSIZE) {
+      STARSIZE = properties.STARSIZE.value;
       starUpdate();
     }
     if (properties.shootingstarsize) {
@@ -256,8 +256,8 @@ window.wallpaperPropertyListener = {
     }
     if (properties.planetvisibility) {
       properties.planetvisibility.value
-        ? planetElement.classList.add("visibility")
-        : planetElement.classList.remove("visibility");
+        ? planetElement.classList.add("hidden")
+        : planetElement.classList.remove("hidden");
     }
     if (properties.particlenum) {
       PARTICLE_NUM = properties.particlenum.value;

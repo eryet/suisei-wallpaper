@@ -4,6 +4,10 @@ body {
   height: 100%;
 }
 
+.tp-dfwv {
+  z-index: 1000;
+}
+
 /* https://stackoverflow.com/questions/18815157/how-to-overlay-image-with-color-in-css */
 #suisei {
   position: absolute;
@@ -41,10 +45,6 @@ body {
   z-index: 300;
 }
 
-.visibility {
-  display: none;
-}
-
 canvas {
   position: absolute;
   top: 0;
@@ -64,18 +64,22 @@ canvas {
   min-height: 100%;
   width: auto;
   height: auto;
-  /* animation-name: rgbIsCool;
-  animation-duration: 1.8s;
-  animation-delay: 0s;
-  animation-iteration-count: infinite; */
   z-index: 2;
 }
 
 @keyframes chroma {
-  0% { filter: hue-rotate(0deg) saturate(100%) brightness(100%); }
-  33% { filter: hue-rotate(120deg) saturate(200%) brightness(150%); }
-  66% { filter: hue-rotate(240deg) saturate(300%) brightness(200%); }
-  100% { filter: hue-rotate(360deg) saturate(100%) brightness(100%); }
+  0% {
+    filter: hue-rotate(0deg) saturate(100%) brightness(100%);
+  }
+  33% {
+    filter: hue-rotate(120deg) saturate(200%) brightness(150%);
+  }
+  66% {
+    filter: hue-rotate(240deg) saturate(300%) brightness(200%);
+  }
+  100% {
+    filter: hue-rotate(360deg) saturate(100%) brightness(100%);
+  }
 }
 
 #chromaImage {

@@ -199,8 +199,8 @@ object-assign
                 };
                 loadTime = new Date().getTime();
               }
-            }.call(this));
-          }.call(this, require("_process")));
+            }).call(this);
+          }).call(this, require("_process"));
         },
         { _process: 3 },
       ],
@@ -479,7 +479,7 @@ object-assign
               root.requestAnimationFrame = raf;
               root.cancelAnimationFrame = caf;
             };
-          }.call(
+          }).call(
             this,
             typeof global !== "undefined"
               ? global
@@ -488,7 +488,7 @@ object-assign
               : typeof window !== "undefined"
               ? window
               : {}
-          ));
+          );
         },
         { "performance-now": 2 },
       ],

@@ -1,4 +1,9 @@
 /* eslint-disable no-undef */
+
+var resizeHandler, mouseMoveHandler;
+var debounceTimeout;
+var mouseX, mouseY;
+
 function animateCoolStar() {
   canvas = document.getElementById("particleCanvas");
 
@@ -12,13 +17,13 @@ function animateCoolStar() {
   };
 
   resizeHandler = resize;
-  document.addEventListener("resize", resizeHandler);
+  window.addEventListener("resize", resizeHandler);
   resize();
 
   mouseX = centerX;
   mouseY = centerY;
 
-  for (var i = 0, p; i < PARTICLE_NUM; i++) {
+  for (var i = 0; i < PARTICLE_NUM; i++) {
     particles[i] = randomizeParticle(new Particle());
     particles[i].z -= 500 * Math.random();
   }
@@ -30,21 +35,6 @@ function animateCoolStar() {
 
   document.addEventListener("mousemove", mouseMoveHandler);
 
-  // document.addEventListener(
-  //   "mousedown",
-  //   function (e) {
-  //     targetSpeed = BOOST_SPEED;
-  //   },
-  //   false
-  // );
-
-  // document.addEventListener(
-  //   "mouseup",
-  //   function (d) {
-  //     targetSpeed = DEFAULT_SPEED;
-  //   },
-  //   false
-  // );
   function loop() {
     context.save();
     context.fillStyle = "rgb(12, 15, 15)";
@@ -53,13 +43,6 @@ function animateCoolStar() {
 
     speed += (targetSpeed - speed) * 0.01;
 
-    var p;
-    var cx, cy;
-    var rx, ry;
-    var f, x, y, r;
-    var pf, px, py, pr;
-    var a, a1, a2;
-
     var halfPi = Math.PI * 0.5;
     var atan2 = Math.atan2;
     var cos = Math.cos;
@@ -67,7 +50,7 @@ function animateCoolStar() {
 
     context.beginPath();
     for (var i = 0; i < PARTICLE_NUM; i++) {
-      p = particles[i];
+      var p = particles[i];
 
       p.pastZ = p.z;
       p.z -= speed;
@@ -77,25 +60,25 @@ function animateCoolStar() {
         continue;
       }
 
-      cx = centerX - (mouseX - centerX) * 1.25;
-      cy = centerY - (mouseY - centerY) * 1.25;
+      var cx = centerX - (mouseX - centerX) * 1.25;
+      var cy = centerY - (mouseY - centerY) * 1.25;
 
-      rx = p.x - cx;
-      ry = p.y - cy;
+      var rx = p.x - cx;
+      var ry = p.y - cy;
 
-      f = FL / p.z;
-      x = cx + rx * f;
-      y = cy + ry * f;
-      r = PARTICLE_BASE_RADIUS * f;
+      var f = FL / p.z;
+      var x = cx + rx * f;
+      var y = cy + ry * f;
+      var r = PARTICLE_BASE_RADIUS * f;
 
-      pf = FL / p.pastZ;
-      px = cx + rx * pf;
-      py = cy + ry * pf;
-      pr = PARTICLE_BASE_RADIUS * pf;
+      var pf = FL / p.pastZ;
+      var px = cx + rx * pf;
+      var py = cy + ry * pf;
+      var pr = PARTICLE_BASE_RADIUS * pf;
 
-      a = atan2(py - y, px - x);
-      a1 = a + halfPi;
-      a2 = a - halfPi;
+      var a = atan2(py - y, px - x);
+      var a1 = a + halfPi;
+      var a2 = a - halfPi;
 
       context.moveTo(px + pr * cos(a1), py + pr * sin(a1));
       context.arc(px, py, pr, a1, a2, true);
@@ -123,19 +106,16 @@ function stopCoolStar() {
   particles = []; // clear particles
 }
 
+function Particle() {
+  this.x = Math.random() * canvasWidth;
+  this.y = Math.random() * canvasHeight;
+  this.z = Math.random() * 1000;
+  this.pastZ = this.z;
+}
+
 function randomizeParticle(p) {
   p.x = Math.random() * canvasWidth;
   p.y = Math.random() * canvasHeight;
-  p.z = Math.random() * 1500 + 500;
+  p.z = Math.random() * 1000 + 500;
   return p;
-}
-
-/**
- * Particle
- */
-function Particle(x, y, z) {
-  this.x = x || 0;
-  this.y = y || 0;
-  this.z = z || 0;
-  this.pastZ = 0;
 }

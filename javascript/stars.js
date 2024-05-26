@@ -4,7 +4,7 @@
 // these variable were in wallpaperengine.js
 // starnumber
 // shootingstarnumber
-// starsize
+// STARSIZE
 // shootingstarsize
 
 (function () {
@@ -36,14 +36,14 @@ function randomInRange(min, max) {
 
 // stars
 function Star(options) {
-  this.size = randomInRange(1, starsize);
+  this.size = randomInRange(1, STARSIZE);
   this.speed = randomInRange(0.05, 0.1);
   this.x = options.x;
   this.y = options.y;
 }
 
 Star.prototype.reset = function () {
-  this.size = randomInRange(1, starsize);
+  this.size = randomInRange(1, STARSIZE);
   this.speed = randomInRange(0.05, 0.1);
   this.x = width;
   this.y = randomInRange(0, height);

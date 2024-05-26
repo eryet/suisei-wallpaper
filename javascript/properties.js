@@ -1,7 +1,7 @@
 // star
 var starnumber = 1000;
 var shootingstarnumber = 5;
-var starsize = 4;
+var STARSIZE = 4;
 var shootingstarsize = 3.5;
 var shootingstarlength = 120;
 var allparticlecolor = "#FFFFFF";
@@ -9,7 +9,8 @@ var allparticlecolor = "#FFFFFF";
 var rgbmode = false;
 
 // Space
-var PARTICLE_NUM = 4000;
+// OVER 4000 IS OVERHEAD
+var PARTICLE_NUM = 3000;
 var PARTICLE_BASE_RADIUS = 0.5;
 var FL = 500;
 var DEFAULT_SPEED = 2;
@@ -34,6 +35,7 @@ var Configs = {
 var canvasBound, grad, twinkle;
 
 // animation tracker
+var fixedAnimationValue = 1;
 var animationFrameId;
 var intervalId;
 var currentAnimationType;

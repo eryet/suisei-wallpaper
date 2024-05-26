@@ -19,9 +19,9 @@ function startAnimation(animationType) {
     case 2:
       animateCoolStar();
       break;
-    case 3:
-      drawTwinkle();
-      break;
+    // case 3:
+    //   drawTwinkle();
+    //   break;
     default:
       // Invalid animationType, do nothing
       break;
@@ -85,7 +85,7 @@ window.wallpaperPropertyListener = {
       starUpdate();
     }
     if (properties.starsize) {
-      starsize = properties.starsize.value;
+      STARSIZE = properties.starsize.value;
       starUpdate();
     }
     if (properties.shootingstarsize) {
@@ -112,8 +112,8 @@ window.wallpaperPropertyListener = {
     }
     if (properties.planetvisibility) {
       properties.planetvisibility.value
-        ? planetElement.classList.add("visibility")
-        : planetElement.classList.remove("visibility");
+        ? planetElement.classList.remove("hidden")
+        : planetElement.classList.add("hidden");
     }
     // if (properties.particlenum) {
     //   PARTICLE_NUM = properties.particlenum.value;
