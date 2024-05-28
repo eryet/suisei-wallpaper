@@ -86,6 +86,12 @@ function animateCoolStar() {
       context.arc(x, y, r, a2, a1, true);
       context.closePath();
     }
+    let color = SPACECOLOR;
+
+    if (SPACERPGMODE) {
+      SPACECOLOR = changeColor();
+    }
+    context.fillStyle = color;
     context.fill();
     animationFrameId = requestAnimationFrame(loop);
   }
@@ -103,7 +109,7 @@ function stopCoolStar() {
   document.removeEventListener("mousemove", mouseMoveHandler);
   mouseMoveHandler = null;
 
-  particles = []; // clear particles
+  particles = [];
 }
 
 function Particle() {

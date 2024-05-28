@@ -1,126 +1,114 @@
 {
-	"contentrating" : "Everyone",
-	"description" : "The vtuber is Hoshimachi Suisei. Check her channel out [here.](https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A)\n\nThe image used is taken from her original song, [GHOST](https://www.youtube.com/watch?v=IKKar5SS29E&ab_channel=SuiseiChannel)\n\nthen the background from the [A FOOL MOON NIGHT](https://osu.ppy.sh/beatmapsets/524026#osu/1127341) beatmap file.\n\ni get inspired by this picture [A FOOL COMET NIGHT](https://www.reddit.com/r/osugame/comments/oxp5cd/a_fool_comet_night/?utm_source=share&utm_medium=web2x&context=3)\n\nparticle reference:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2862882636\nhttps://codepen.io/akm2/pen/RwQXLdP\nhttps://codepen.io/akm2/pen/DKpBzY\n\nUpdate #1\n1.Update wallpaper settings\n\nUpdate #2 (26/05/2024)\n1.fix planet hidden at start sorry guys (it should be visible at first)\n2. remove third animation(it has event problem), and will have massive update following when i finish (web-version first)",
-	"file" : "index.html",
-	"general" : 
-	{
-		"properties" : 
-		{
-			"animationtype" : 
-			{
-				"fraction" : false,
-				"index" : 0,
-				"max" : 2,
-				"min" : 1,
-				"order" : 100,
-				"text" : "<br />動畫<br />Animation<br />",
-				"type" : "slider",
-				"value" : 1
-			},
-			"planetvisibility" : 
-			{
-				"index" : 7,
-				"order" : 107,
-				"text" : "<br />星球<br />Planet<br />",
-				"type" : "bool",
-				"value" : true
-			},
-			"schemecolor" : 
-			{
-				"order" : 0,
-				"text" : "ui_browse_properties_scheme_color",
-				"type" : "color",
-				"value" : "0.7137254901960784 0.8941176470588236 0.9921568627450981"
-			},
-			"shootingstarlength" : 
-			{
-				"fraction" : true,
-				"index" : 4,
-				"max" : 115,
-				"min" : 90,
-				"order" : 104,
-				"precision" : 1.1,
-				"step" : 0.79432823,
-				"text" : "<br />流星MAX長度<br />Shooting Star Max Length<br />",
-				"type" : "slider",
-				"value" : 90
-			},
-			"shootingstarnumber" : 
-			{
-				"fraction" : false,
-				"index" : 3,
-				"max" : 50,
-				"min" : 0,
-				"order" : 103,
-				"text" : "<br />流星<br />Shooting Star<br />",
-				"type" : "slider",
-				"value" : 5
-			},
-			"shootingstarsize" : 
-			{
-				"fraction" : true,
-				"index" : 5,
-				"max" : 5,
-				"min" : 1,
-				"order" : 105,
-				"precision" : 2,
-				"step" : 0.1,
-				"text" : "<br />流星MAX大小<br />Shooting Star Max Size<br />",
-				"type" : "slider",
-				"value" : 3.5
-			},
-			"starnumber" : 
-			{
-				"fraction" : false,
-				"index" : 1,
-				"max" : 3000,
-				"min" : 0,
-				"order" : 101,
-				"text" : "<br />星星<br />Star<br />",
-				"type" : "slider",
-				"value" : 1000
-			},
-			"starrgbmode" : 
-			{
-				"index" : 8,
-				"order" : 108,
-				"text" : "<br />星星 RGB 模式 <br />Star RGB Mode (for fun)<br />",
-				"type" : "bool",
-				"value" : false
-			},
-			"starsize" : 
-			{
-				"fraction" : true,
-				"index" : 2,
-				"max" : 7,
-				"min" : 2,
-				"order" : 102,
-				"precision" : 1.1,
-				"step" : 0.79432823,
-				"text" : "<br />星星MAX大小<br />Star Max Size<br />",
-				"type" : "slider",
-				"value" : 3
-			},
-			"waifurgbmode" : 
-			{
-				"index" : 6,
-				"order" : 106,
-				"text" : "<br />老婆 RGB 模式 <br />Waifu RGB Mode (for fun)<br />",
-				"type" : "bool",
-				"value" : false
-			}
-		}
-	},
-	"preview" : "preview.gif",
-	"ratingsex" : "none",
-	"ratingviolence" : "none",
-	"snapshotformat" : 0,
-	"snapshotoverlay" : "",
-	"tags" : [ "Anime" ],
-	"title" : "Hoshimachi Suisei [A FOOL COMET NIGHT] - Wallpaper ( 1920x1080 )",
-	"type" : "web",
-	"version" : 6,
-	"visibility" : "public",
-	"workshopid" : "3011823423",
-	"workshopurl" : "steam://url/CommunityFilePage/3011823423"
+  "contentrating": "Everyone",
+  "description": "The vtuber is Hoshimachi Suisei. Check her channel out [here.](https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A)\n\nThe image used is taken from her original song, [GHOST](https://www.youtube.com/watch?v=IKKar5SS29E&ab_channel=SuiseiChannel)\n\nthen the background from the [A FOOL MOON NIGHT](https://osu.ppy.sh/beatmapsets/524026#osu/1127341) beatmap file.\n\ni get inspired by this picture [A FOOL COMET NIGHT](https://www.reddit.com/r/osugame/comments/oxp5cd/a_fool_comet_night/?utm_source=share&utm_medium=web2x&context=3)\n\nparticle reference:\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2862882636\nhttps://codepen.io/akm2/pen/RwQXLdP\nhttps://codepen.io/akm2/pen/DKpBzY\n\nUpdate #1\n1.Update wallpaper settings\n\nUpdate #2 (26/05/2024)\n1.fix planet hidden at start sorry guys (it should be visible at first)\n2. remove third animation(it has event problem), and will have massive update following when i finish (web-version first)",
+  "file": "index.html",
+  "general": {
+    "properties": {
+      "animationtype": {
+        "fraction": false,
+        "index": 0,
+        "max": 2,
+        "min": 1,
+        "order": 100,
+        "text": "<br />動畫<br />Animation<br />",
+        "type": "slider",
+        "value": 1
+      },
+      "planetvisibility": {
+        "index": 7,
+        "order": 107,
+        "text": "<br />星球<br />Planet<br />",
+        "type": "bool",
+        "value": true
+      },
+      "schemecolor": {
+        "order": 0,
+        "text": "ui_browse_properties_scheme_color",
+        "type": "color",
+        "value": "0.7137254901960784 0.8941176470588236 0.9921568627450981"
+      },
+      "SHOOTINGSTARLENGTH": {
+        "fraction": true,
+        "index": 4,
+        "max": 115,
+        "min": 90,
+        "order": 104,
+        "precision": 1.1,
+        "step": 0.79432823,
+        "text": "<br />流星MAX長度<br />Shooting Star Max Length<br />",
+        "type": "slider",
+        "value": 90
+      },
+      "shootingstarnumber": {
+        "fraction": false,
+        "index": 3,
+        "max": 50,
+        "min": 0,
+        "order": 103,
+        "text": "<br />流星<br />Shooting Star<br />",
+        "type": "slider",
+        "value": 5
+      },
+      "shootingstarsize": {
+        "fraction": true,
+        "index": 5,
+        "max": 5,
+        "min": 1,
+        "order": 105,
+        "precision": 2,
+        "step": 0.1,
+        "text": "<br />流星MAX大小<br />Shooting Star Max Size<br />",
+        "type": "slider",
+        "value": 3.5
+      },
+      "starnumber": {
+        "fraction": false,
+        "index": 1,
+        "max": 3000,
+        "min": 0,
+        "order": 101,
+        "text": "<br />星星<br />Star<br />",
+        "type": "slider",
+        "value": 1000
+      },
+      "starrgbmode": {
+        "index": 8,
+        "order": 108,
+        "text": "<br />星星 RGB 模式 <br />Star RGB Mode (for fun)<br />",
+        "type": "bool",
+        "value": false
+      },
+      "starsize": {
+        "fraction": true,
+        "index": 2,
+        "max": 7,
+        "min": 2,
+        "order": 102,
+        "precision": 1.1,
+        "step": 0.79432823,
+        "text": "<br />星星MAX大小<br />Star Max Size<br />",
+        "type": "slider",
+        "value": 3
+      },
+      "waifurgbmode": {
+        "index": 6,
+        "order": 106,
+        "text": "<br />老婆 RGB 模式 <br />Waifu RGB Mode (for fun)<br />",
+        "type": "bool",
+        "value": false
+      }
+    }
+  },
+  "preview": "preview.gif",
+  "ratingsex": "none",
+  "ratingviolence": "none",
+  "snapshotformat": 0,
+  "snapshotoverlay": "",
+  "tags": ["Anime"],
+  "title": "Hoshimachi Suisei [A FOOL COMET NIGHT] - Wallpaper ( 1920x1080 )",
+  "type": "web",
+  "version": 6,
+  "visibility": "public",
+  "workshopid": "3011823423",
+  "workshopurl": "steam://url/CommunityFilePage/3011823423"
 }

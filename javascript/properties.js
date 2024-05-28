@@ -1,12 +1,13 @@
 // star
-var starnumber = 1000;
-var shootingstarnumber = 5;
+var STARNUMBER = 1000;
+var SHOOTINGSTARNUMBER = 5;
 var STARSIZE = 4;
-var shootingstarsize = 3.5;
-var shootingstarlength = 120;
-var allparticlecolor = "#FFFFFF";
-// particle rgb
-var rgbmode = false;
+var SHOOTINGSTARSIZE = 3.5;
+var SHOOTINGSTARLENGTH = 120;
+var STARCOLOR = "#ffffffff";
+var SPACECOLOR = "#ffffffff";
+var STARRPGMODE = false;
+var SPACERPGMODE = false;
 
 // Space
 // OVER 4000 IS OVERHEAD

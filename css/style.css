@@ -45,7 +45,7 @@ body {
   z-index: 300;
 }
 
-canvas {
+#particleCanvas {
   position: absolute;
   top: 0;
   left: 0;

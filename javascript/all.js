@@ -224,24 +224,24 @@ function starUpdate() {
 
 window.wallpaperPropertyListener = {
   applyUserProperties: function (properties) {
-    if (properties.shootingstarnumber) {
-      shootingstarnumber = properties.shootingstarnumber.value;
+    if (properties.SHOOTINGSTARNUMBER) {
+      SHOOTINGSTARNUMBER = properties.SHOOTINGSTARNUMBER.value;
       starUpdate();
     }
     if (properties.STARSIZE) {
       STARSIZE = properties.STARSIZE.value;
       starUpdate();
     }
-    if (properties.shootingstarsize) {
-      shootingstarsize = properties.shootingstarsize.value;
+    if (properties.SHOOTINGSTARSIZE) {
+      SHOOTINGSTARSIZE = properties.SHOOTINGSTARSIZE.value;
       starUpdate();
     }
-    if (properties.shootingstarlength) {
-      shootingstarlength = properties.shootingstarlength.value;
+    if (properties.SHOOTINGSTARLENGTH) {
+      SHOOTINGSTARLENGTH = properties.SHOOTINGSTARLENGTH.value;
       starUpdate();
     }
-    if (properties.starnumber) {
-      starnumber = properties.starnumber.value;
+    if (properties.STARNUMBER) {
+      STARNUMBER = properties.STARNUMBER.value;
       starUpdate();
     }
     if (properties.animationtype) {
@@ -251,7 +251,7 @@ window.wallpaperPropertyListener = {
       togglerRGBImage(properties.waifurgbmode.value);
     }
     if (properties.starrgbmode) {
-      rgbmode = properties.starrgbmode.value;
+      STARRPGMODE = properties.starrgbmode.value;
       startAnimation(properties.animationtype.value);
     }
     if (properties.planetvisibility) {

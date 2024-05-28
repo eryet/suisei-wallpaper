@@ -2,10 +2,10 @@
 // shooting start code
 
 // these variable were in wallpaperengine.js
-// starnumber
-// shootingstarnumber
+// STARNUMBER
+// SHOOTINGSTARNUMBER
 // STARSIZE
-// shootingstarsize
+// SHOOTINGSTARSIZE
 
 (function () {
   var requestAnimationFrame =
@@ -66,9 +66,9 @@ function ShootingStar() {
 ShootingStar.prototype.reset = function () {
   this.x = randomInRange(0, width * 1.5);
   this.y = 0;
-  this.len = randomInRange(10, shootingstarlength);
+  this.len = randomInRange(10, SHOOTINGSTARLENGTH);
   this.speed = randomInRange(6, 16);
-  this.size = randomInRange(0.5, shootingstarsize);
+  this.size = randomInRange(0.5, SHOOTINGSTARSIZE);
   // this is used so the shooting stars arent constant
   this.waitTime = Date.now() + randomInRange(500, 3500);
   this.active = false;
@@ -98,7 +98,7 @@ ShootingStar.prototype.update = function () {
 var entities = [];
 
 function entitiesUpdate() {
-  for (let i = 0; i < starnumber; i++) {
+  for (let i = 0; i < STARNUMBER; i++) {
     entities.push(
       new Star({
         x: Math.random() * width,
@@ -108,7 +108,7 @@ function entitiesUpdate() {
   }
 
   // Add 5 shooting stars that just cycle.
-  for (let i = 0; i < shootingstarnumber; i++) {
+  for (let i = 0; i < SHOOTINGSTARNUMBER; i++) {
     entities.push(new ShootingStar());
   }
 }
@@ -117,10 +117,8 @@ entitiesUpdate();
 
 var hue = 0;
 function changeColor() {
-  // Increment hue
   hue = (hue + 1) % 360;
 
-  // Return a CSS HSL color string
   return "hsl(" + hue + ", 100%, 50%)";
 }
 
@@ -136,9 +134,9 @@ function animate() {
   // bgCtx.clearRect(0, 0, width, height);
   animationFrameId = requestAnimationFrame(animate);
 
-  let color = allparticlecolor;
+  let color = STARCOLOR;
 
-  if (rgbmode) {
+  if (STARRPGMODE) {
     color = changeColor();
   }
 
