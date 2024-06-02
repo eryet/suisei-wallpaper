@@ -11,6 +11,10 @@ function startAnimation(animationType) {
     stopCoolStar();
   }
 
+  if (currentAnimationType === 3) {
+    stopMotionStar();
+  }
+
   // Start the new animation
   switch (animationType) {
     case 1:
@@ -18,6 +22,10 @@ function startAnimation(animationType) {
       break;
     case 2:
       animateCoolStar();
+      break;
+    case 3:
+      generate();
+      step();
       break;
     // case 3:
     //   drawTwinkle();
@@ -29,27 +37,6 @@ function startAnimation(animationType) {
 
   // Update the currentAnimationType
   currentAnimationType = animationType;
-}
-
-function stopAnimation() {
-  // Cancel the current animation frame if it exists
-  if (animationFrameId !== undefined) {
-    cancelAnimationFrame(animationFrameId);
-    animationFrameId = undefined; // Reset to undefined after cancelling
-  }
-
-  // Clear the interval if it exists
-  if (intervalId !== undefined) {
-    clearInterval(intervalId);
-    intervalId = undefined; // Reset to undefined after clearing
-  }
-}
-
-function rgbToCSS(colorArray) {
-  var customColor = colorArray.split(" ").map(function (c) {
-    return Math.ceil(c * 255);
-  });
-  return "rgb(" + customColor + ")";
 }
 
 function togglerRGBImage(rgbimage) {

@@ -5,8 +5,6 @@ var debounceTimeout;
 var mouseX, mouseY;
 
 function animateCoolStar() {
-  canvas = document.getElementById("particleCanvas");
-
   var resize = function () {
     canvasWidth = canvas.width = window.innerWidth;
     canvasHeight = canvas.height = window.innerHeight;

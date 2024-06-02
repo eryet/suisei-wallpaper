@@ -17,6 +17,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  pointer-events: none;
   /* background-blend-mode: overlay; */
   /* z-index: 1; */
 }
@@ -27,6 +28,7 @@ body {
   min-height: 100%;
   width: auto;
   height: auto;
+  pointer-events: none;
 }
 
 .zi100 {

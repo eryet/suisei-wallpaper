@@ -4,20 +4,20 @@ var SHOOTINGSTARNUMBER = 5;
 var STARSIZE = 4;
 var SHOOTINGSTARSIZE = 3.5;
 var SHOOTINGSTARLENGTH = 120;
-var STARCOLOR = "#ffffffff";
-var SPACECOLOR = "#ffffffff";
+var STARCOLOR = "#b1e2fdff";
+var SPACECOLOR = "#b1e2fdff";
 var STARRPGMODE = false;
 var SPACERPGMODE = false;
 
 // Space
 // OVER 4000 IS OVERHEAD
-var PARTICLE_NUM = 3000;
+var PARTICLE_NUM = 2000;
 var PARTICLE_BASE_RADIUS = 0.5;
 var FL = 500;
 var DEFAULT_SPEED = 2;
 var BOOST_SPEED = 300;
 
-var canvas;
+var canvas = document.getElementById("particleCanvas");
 var canvasWidth, canvasHeight;
 var context;
 var centerX, centerY;
@@ -36,7 +36,7 @@ var Configs = {
 var canvasBound, grad, twinkle;
 
 // animation tracker
-var fixedAnimationValue = 1;
+var fixedAnimationValue = 3;
 var animationFrameId;
 var intervalId;
 var currentAnimationType;

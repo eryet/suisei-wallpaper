@@ -7,18 +7,6 @@
 // STARSIZE
 // SHOOTINGSTARSIZE
 
-(function () {
-  var requestAnimationFrame =
-    window.requestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    function (callback) {
-      window.setTimeout(callback, 1000 / 60);
-    };
-  window.requestAnimationFrame = requestAnimationFrame;
-})();
-
 var background = document.getElementById("particleCanvas"),
   bgCtx = background.getContext("2d"),
   width = window.screen.width,
