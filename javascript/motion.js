@@ -3,8 +3,6 @@ var STAR_COUNT = (window.innerWidth + window.innerHeight) / 8,
   STAR_MIN_SCALE = 0.2,
   OVERFLOW_THRESHOLD = 50;
 
-context = canvas.getContext("2d");
-
 let scale = 1;
 
 let stars = [];
@@ -12,12 +10,6 @@ let stars = [];
 let pointerX, pointerY;
 
 let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
-
-let touchInput = false;
-
-window.onresize = resize;
-document.addEventListener("mousemove", onMouseMove);
-// document.addEventListener("mouseleave", onMouseLeave);
 
 function generate() {
   stars = [];
@@ -92,12 +84,17 @@ function resize() {
 }
 
 function step() {
+  window.addEventListener("resize", resize);
+  document.addEventListener("mouseleave", onMouseLeave);
+  setTimeout(() => {
+    document.addEventListener("mousemove", onMouseMove);
+  }, 5000);
   context.clearRect(0, 0, width, height);
 
   update();
   render();
 
-  requestAnimationFrame(step);
+  animationFrameId = requestAnimationFrame(step);
 }
 
 function update() {
@@ -210,8 +207,8 @@ function movePointer(x, y) {
     let ox = x - pointerX,
       oy = y - pointerY;
 
-    velocity.tx = velocity.tx + (ox / 8) * scale * (touchInput ? 1 : -1);
-    velocity.ty = velocity.ty + (oy / 8) * scale * (touchInput ? 1 : -1);
+    velocity.tx = velocity.tx + (ox / 8) * scale * -1;
+    velocity.ty = velocity.ty + (oy / 8) * scale * -1;
   }
 
   pointerX = x;
@@ -228,7 +225,10 @@ function onMouseLeave() {
 }
 
 function stopMotionStar() {
+  cancelAnimationFrame(animationFrameId);
+  animationFrameId = null;
   stars = [];
+  velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
   window.removeEventListener("resize", resize);
   document.removeEventListener("mousemove", onMouseMove);
   document.removeEventListener("mouseleave", onMouseLeave);

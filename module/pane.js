@@ -15,19 +15,19 @@ window.addEventListener("DOMContentLoaded", () => {
       "function" &&
     window.wallpaperPropertyListener.applyUserProperties.length > 0
   ) {
-    startAnimation(fixedAnimationValue);
+    startAnimation(STARTING_ANIMATION);
   } else {
     document.querySelector("tp-dfwv").classList.add("hidden");
   }
 
   const PARAMS = {
-    animation: 3,
+    animation: STARTING_ANIMATION,
     star_color: STARCOLOR,
     waifu_rgb: false,
     star_rgb: false,
     star_size: STARSIZE,
-    star_number: STARNUMBER,
-    shootingstar_number: SHOOTINGSTARNUMBER,
+    star_number: A1_STAR_NUM,
+    shootingstar_number: A1_SHOOTING_NUM,
     space_particle_num: PARTICLE_NUM,
     space_base_radius: PARTICLE_BASE_RADIUS,
     space_fl: FL,
@@ -79,7 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
       max: 3000,
     })
     .on("change", (ev) => {
-      STARNUMBER = ev.value;
+      A1_STAR_NUM = ev.value;
       starUpdate();
     });
   animation1
@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
       max: 33,
     })
     .on("change", (ev) => {
-      SHOOTINGSTARNUMBER = ev.value;
+      A1_SHOOTING_NUM = ev.value;
       starUpdate();
     });
   animation1.addBinding(PARAMS, "waifu_rgb").on("change", (ev) => {

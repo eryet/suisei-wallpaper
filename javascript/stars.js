@@ -1,22 +1,17 @@
 /* eslint-disable no-undef */
-// shooting start code
+// ANIMATION 1
 
 // these variable were in wallpaperengine.js
-// STARNUMBER
-// SHOOTINGSTARNUMBER
+// A1_STAR_NUM
+// A1_SHOOTING_NUM
 // STARSIZE
 // SHOOTINGSTARSIZE
 
-var background = document.getElementById("particleCanvas"),
-  bgCtx = background.getContext("2d"),
-  width = window.screen.width,
-  height = window.screen.height;
+var width = window.screen.width;
+var height = window.screen.height;
 
-background.width = width;
-background.height = height;
-
-// bgCtx.fillStyle = "#05004c";
-// bgCtx.fillRect(0, 0, width, height);
+canvas.width = width;
+canvas.height = height;
 
 function randomInRange(min, max) {
   return Math.random() * (max - min) + min;
@@ -42,7 +37,7 @@ Star.prototype.update = function () {
   if (this.x < 0) {
     this.reset();
   } else {
-    bgCtx.fillRect(this.x, this.y, this.size, this.size);
+    context.fillRect(this.x, this.y, this.size, this.size);
   }
 };
 
@@ -70,11 +65,11 @@ ShootingStar.prototype.update = function () {
     if (this.x < 0 || this.y >= height) {
       this.reset();
     } else {
-      bgCtx.lineWidth = this.size;
-      bgCtx.beginPath();
-      bgCtx.moveTo(this.x, this.y);
-      bgCtx.lineTo(this.x + this.len, this.y - this.len);
-      bgCtx.stroke();
+      context.lineWidth = this.size;
+      context.beginPath();
+      context.moveTo(this.x, this.y);
+      context.lineTo(this.x + this.len, this.y - this.len);
+      context.stroke();
     }
   } else {
     if (this.waitTime < new Date().getTime()) {
@@ -86,7 +81,7 @@ ShootingStar.prototype.update = function () {
 var entities = [];
 
 function entitiesUpdate() {
-  for (let i = 0; i < STARNUMBER; i++) {
+  for (let i = 0; i < A1_STAR_NUM; i++) {
     entities.push(
       new Star({
         x: Math.random() * width,
@@ -96,30 +91,24 @@ function entitiesUpdate() {
   }
 
   // Add 5 shooting stars that just cycle.
-  for (let i = 0; i < SHOOTINGSTARNUMBER; i++) {
+  for (let i = 0; i < A1_SHOOTING_NUM; i++) {
     entities.push(new ShootingStar());
   }
 }
 
-entitiesUpdate();
-
-var hue = 0;
 function changeColor() {
+  let hue = 0;
   hue = (hue + 1) % 360;
 
   return "hsl(" + hue + ", 100%, 50%)";
 }
 
+function stopCoolStar() {
+  cancelAnimationFrame(animationFrameId);
+  animationFrameId = null;
+}
+
 function animate() {
-  // init the stars
-  // var img = new Image();
-  // img.src = "../images/background.jpg";
-  // bgCtx.createPattern(img, "no-repeat");
-  // bgCtx.fillStyle = "#ffffff";
-  // bgCtx.strokeStyle = "#ffffff";
-  // bgCtx.fillStyle = "#ff0000";
-  // bgCtx.strokeStyle = "#ff0000";
-  // bgCtx.clearRect(0, 0, width, height);
   animationFrameId = requestAnimationFrame(animate);
 
   let color = STARCOLOR;
@@ -128,9 +117,9 @@ function animate() {
     color = changeColor();
   }
 
-  bgCtx.fillStyle = color;
-  bgCtx.strokeStyle = color;
-  bgCtx.clearRect(0, 0, width, height);
+  context.fillStyle = color;
+  context.strokeStyle = color;
+  context.clearRect(0, 0, width, height);
 
   var entLen = entities.length;
 

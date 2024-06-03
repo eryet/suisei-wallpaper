@@ -110,7 +110,7 @@ function animateCoolStar() {
   loop();
 }
 
-function stopCoolStar() {
+function stopSpaceStar() {
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId);
     animationFrameId = null;
@@ -152,7 +152,7 @@ var planetElement = document.getElementById("planet");
 function startAnimation(animationType) {
   // If the previous animation was 'animateCoolStar', stop it.
   if (currentAnimationType === 2) {
-    stopCoolStar();
+    stopSpaceStar();
   }
 
   // Start the new animation
@@ -173,20 +173,6 @@ function startAnimation(animationType) {
 
   // Update the currentAnimationType
   currentAnimationType = animationType;
-}
-
-function stopAnimation() {
-  // Cancel the current animation frame if it exists
-  if (animationFrameId !== undefined) {
-    cancelAnimationFrame(animationFrameId);
-    animationFrameId = undefined; // Reset to undefined after cancelling
-  }
-
-  // Clear the interval if it exists
-  if (intervalId !== undefined) {
-    clearInterval(intervalId);
-    intervalId = undefined; // Reset to undefined after clearing
-  }
 }
 
 function rgbToCSS(colorArray) {
@@ -224,8 +210,8 @@ function starUpdate() {
 
 window.wallpaperPropertyListener = {
   applyUserProperties: function (properties) {
-    if (properties.SHOOTINGSTARNUMBER) {
-      SHOOTINGSTARNUMBER = properties.SHOOTINGSTARNUMBER.value;
+    if (properties.A1_SHOOTING_NUM) {
+      A1_SHOOTING_NUM = properties.A1_SHOOTING_NUM.value;
       starUpdate();
     }
     if (properties.STARSIZE) {
@@ -240,8 +226,8 @@ window.wallpaperPropertyListener = {
       SHOOTINGSTARLENGTH = properties.SHOOTINGSTARLENGTH.value;
       starUpdate();
     }
-    if (properties.STARNUMBER) {
-      STARNUMBER = properties.STARNUMBER.value;
+    if (properties.A1_STAR_NUM) {
+      A1_STAR_NUM = properties.A1_STAR_NUM.value;
       starUpdate();
     }
     if (properties.animationtype) {

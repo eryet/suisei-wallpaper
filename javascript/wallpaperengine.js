@@ -7,8 +7,12 @@ var planetElement = document.getElementById("planet");
 
 function startAnimation(animationType) {
   // If the previous animation was 'animateCoolStar', stop it.
-  if (currentAnimationType === 2) {
+  if (currentAnimationType === 1) {
     stopCoolStar();
+  }
+
+  if (currentAnimationType === 2) {
+    stopSpaceStar();
   }
 
   if (currentAnimationType === 3) {
@@ -18,6 +22,7 @@ function startAnimation(animationType) {
   // Start the new animation
   switch (animationType) {
     case 1:
+      starUpdate();
       animate();
       break;
     case 2:
@@ -68,7 +73,7 @@ function starUpdate() {
 window.wallpaperPropertyListener = {
   applyUserProperties: function (properties) {
     if (properties.shootingstarnumber) {
-      SHOOTINGSTARNUMBER = properties.shootingstarnumber.value;
+      A1_SHOOTING_NUM = properties.shootingstarnumber.value;
       starUpdate();
     }
     if (properties.starsize) {
@@ -84,7 +89,7 @@ window.wallpaperPropertyListener = {
       starUpdate();
     }
     if (properties.starnumber) {
-      STARNUMBER = properties.starnumber.value;
+      A1_STAR_NUM = properties.starnumber.value;
       starUpdate();
     }
     if (properties.animationtype) {

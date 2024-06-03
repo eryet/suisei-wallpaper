@@ -10,7 +10,6 @@ function animateCoolStar() {
     canvasHeight = canvas.height = window.innerHeight;
     centerX = canvasWidth * 0.5;
     centerY = canvasHeight * 0.5;
-    context = canvas.getContext("2d");
     context.fillStyle = "rgb(255, 255, 255)";
   };
 
@@ -97,11 +96,11 @@ function animateCoolStar() {
   loop();
 }
 
-function stopCoolStar() {
+function stopSpaceStar() {
   cancelAnimationFrame(animationFrameId);
   animationFrameId = null;
 
-  document.removeEventListener("resize", resizeHandler);
+  window.removeEventListener("resize", resizeHandler);
   resizeHandler = null;
 
   document.removeEventListener("mousemove", mouseMoveHandler);
