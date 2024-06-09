@@ -77,15 +77,15 @@ window.wallpaperPropertyListener = {
       starUpdate();
     }
     if (properties.starsize) {
-      STARSIZE = properties.starsize.value;
+      A1_STARSIZE = properties.starsize.value;
       starUpdate();
     }
     if (properties.shootingstarsize) {
-      SHOOTINGSTARSIZE = properties.shootingstarsize.value;
+      A1_SHOOTINGSTARSIZE = properties.shootingstarsize.value;
       starUpdate();
     }
     if (properties.shootingstarlength) {
-      SHOOTINGSTARLENGTH = properties.shootingstarlength.value;
+      A1_SHOOTINGSTARLENGTH = properties.shootingstarlength.value;
       starUpdate();
     }
     if (properties.starnumber) {
@@ -99,7 +99,7 @@ window.wallpaperPropertyListener = {
       togglerRGBImage(properties.waifurgbmode.value);
     }
     if (properties.starrgbmode) {
-      STARRPGMODE = properties.starrgbmode.value;
+      A1_STARRPGMODE = properties.starrgbmode.value;
       startAnimation(properties.animationtype.value);
     }
     if (properties.planetvisibility) {
@@ -108,7 +108,7 @@ window.wallpaperPropertyListener = {
         : planetElement.classList.add("hidden");
     }
     // if (properties.particlenum) {
-    //   PARTICLE_NUM = properties.particlenum.value;
+    //   A2_PARTICLE_NUM = properties.particlenum.value;
     //   startAnimation(properties.animationtype.value);
     // }
   },

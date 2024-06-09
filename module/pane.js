@@ -22,16 +22,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const PARAMS = {
     animation: STARTING_ANIMATION,
-    star_color: STARCOLOR,
     waifu_rgb: false,
-    star_rgb: false,
-    star_size: STARSIZE,
-    star_number: A1_STAR_NUM,
-    shootingstar_number: A1_SHOOTING_NUM,
-    space_particle_num: PARTICLE_NUM,
-    space_base_radius: PARTICLE_BASE_RADIUS,
-    space_fl: FL,
-    space_color: SPACECOLOR,
+    a1_star_color: A1_STARCOLOR,
+    a1_star_size: A1_STARSIZE,
+    a1_star_number: A1_STAR_NUM,
+    a1_star_rgb: false,
+    a1_shootingstar_number: A1_SHOOTING_NUM,
+    space_particle_num: A2_PARTICLE_NUM,
+    space_base_radius: A2_PARTICLE_BASE_RADIUS,
+    space_fl: A2_FL,
+    space_color: A2_SPACECOLOR,
     space_rgb: false,
     star_count: STAR_COUNT,
     star3_size: STAR_SIZE,
@@ -57,23 +57,30 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   animation1
-    .addBinding(PARAMS, "star_color", {
+    .addBinding(PARAMS, "a1_star_color", {
       view: "color",
+      label: "star_color",
       picker: "inline",
       expanded: true,
     })
     .on("change", (ev) => {
-      STARCOLOR = ev.value;
+      A1_STARCOLOR = ev.value;
       starUpdate();
     });
   animation1
-    .addBinding(PARAMS, "star_size", { step: 1, min: 2, max: 7 })
+    .addBinding(PARAMS, "a1_star_size", {
+      label: "star_size",
+      step: 1,
+      min: 2,
+      max: 7,
+    })
     .on("change", (ev) => {
-      STARSIZE = ev.value;
+      A1_STARSIZE = ev.value;
       starUpdate();
     });
   animation1
-    .addBinding(PARAMS, "star_number", {
+    .addBinding(PARAMS, "a1_star_number", {
+      label: "star_number",
       step: 10,
       min: 100,
       max: 3000,
@@ -83,7 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
       starUpdate();
     });
   animation1
-    .addBinding(PARAMS, "shootingstar_number", {
+    .addBinding(PARAMS, "a1_shootingstar_number", {
       step: 1,
       min: 3,
       max: 33,
@@ -95,9 +102,13 @@ window.addEventListener("DOMContentLoaded", () => {
   animation1.addBinding(PARAMS, "waifu_rgb").on("change", (ev) => {
     togglerRGBImage(ev.value);
   });
-  animation1.addBinding(PARAMS, "star_rgb").on("change", (ev) => {
-    STARRPGMODE = ev.value;
-  });
+  animation1
+    .addBinding(PARAMS, "a1_star_rgb", {
+      label: "star_rgb",
+    })
+    .on("change", (ev) => {
+      A1_STARRPGMODE = ev.value;
+    });
 
   const animation2 = pane.addFolder({
     title: "Animation 2",
@@ -112,7 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
       expanded: true,
     })
     .on("change", (ev) => {
-      SPACECOLOR = ev.value;
+      A2_SPACECOLOR = ev.value;
       starUpdate();
     });
   animation2
@@ -122,7 +133,7 @@ window.addEventListener("DOMContentLoaded", () => {
       max: 3000,
     })
     .on("change", (ev) => {
-      PARTICLE_NUM = ev.value;
+      A2_PARTICLE_NUM = ev.value;
       starUpdate();
     });
   animation2
@@ -132,7 +143,7 @@ window.addEventListener("DOMContentLoaded", () => {
       max: 5,
     })
     .on("change", (ev) => {
-      PARTICLE_BASE_RADIUS = ev.value;
+      A2_PARTICLE_BASE_RADIUS = ev.value;
       starUpdate();
     });
   animation2
@@ -142,11 +153,11 @@ window.addEventListener("DOMContentLoaded", () => {
       max: 1000,
     })
     .on("change", (ev) => {
-      FL = ev.value;
+      A2_FL = ev.value;
       starUpdate();
     });
   animation2.addBinding(PARAMS, "space_rgb").on("change", (ev) => {
-    SPACERPGMODE = ev.value;
+    A2_SPACERPGMODE = ev.value;
   });
 
   const animation3 = pane.addFolder({

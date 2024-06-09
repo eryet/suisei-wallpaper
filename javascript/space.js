@@ -20,7 +20,7 @@ function animateCoolStar() {
   mouseX = centerX;
   mouseY = centerY;
 
-  for (var i = 0; i < PARTICLE_NUM; i++) {
+  for (var i = 0; i < A2_PARTICLE_NUM; i++) {
     particles[i] = randomizeParticle(new Particle());
     particles[i].z -= 500 * Math.random();
   }
@@ -46,7 +46,7 @@ function animateCoolStar() {
     var sin = Math.sin;
 
     context.beginPath();
-    for (var i = 0; i < PARTICLE_NUM; i++) {
+    for (var i = 0; i < A2_PARTICLE_NUM; i++) {
       var p = particles[i];
 
       p.pastZ = p.z;
@@ -63,15 +63,15 @@ function animateCoolStar() {
       var rx = p.x - cx;
       var ry = p.y - cy;
 
-      var f = FL / p.z;
+      var f = A2_FL / p.z;
       var x = cx + rx * f;
       var y = cy + ry * f;
-      var r = PARTICLE_BASE_RADIUS * f;
+      var r = A2_PARTICLE_BASE_RADIUS * f;
 
-      var pf = FL / p.pastZ;
+      var pf = A2_FL / p.pastZ;
       var px = cx + rx * pf;
       var py = cy + ry * pf;
-      var pr = PARTICLE_BASE_RADIUS * pf;
+      var pr = A2_PARTICLE_BASE_RADIUS * pf;
 
       var a = atan2(py - y, px - x);
       var a1 = a + halfPi;
@@ -83,10 +83,10 @@ function animateCoolStar() {
       context.arc(x, y, r, a2, a1, true);
       context.closePath();
     }
-    let color = SPACECOLOR;
+    let color = A2_SPACECOLOR;
 
-    if (SPACERPGMODE) {
-      SPACECOLOR = changeColor();
+    if (A2_SPACERPGMODE) {
+      A2_SPACECOLOR = changeColor();
     }
     context.fillStyle = color;
     context.fill();

@@ -4,8 +4,8 @@
 // these variable were in wallpaperengine.js
 // A1_STAR_NUM
 // A1_SHOOTING_NUM
-// STARSIZE
-// SHOOTINGSTARSIZE
+// A1_STARSIZE
+// A1_SHOOTINGSTARSIZE
 
 var width = window.screen.width;
 var height = window.screen.height;
@@ -19,14 +19,14 @@ function randomInRange(min, max) {
 
 // stars
 function Star(options) {
-  this.size = randomInRange(1, STARSIZE);
+  this.size = randomInRange(1, A1_STARSIZE);
   this.speed = randomInRange(0.05, 0.1);
   this.x = options.x;
   this.y = options.y;
 }
 
 Star.prototype.reset = function () {
-  this.size = randomInRange(1, STARSIZE);
+  this.size = randomInRange(1, A1_STARSIZE);
   this.speed = randomInRange(0.05, 0.1);
   this.x = width;
   this.y = randomInRange(0, height);
@@ -49,9 +49,9 @@ function ShootingStar() {
 ShootingStar.prototype.reset = function () {
   this.x = randomInRange(0, width * 1.5);
   this.y = 0;
-  this.len = randomInRange(10, SHOOTINGSTARLENGTH);
+  this.len = randomInRange(10, A1_SHOOTINGSTARLENGTH);
   this.speed = randomInRange(6, 16);
-  this.size = randomInRange(0.5, SHOOTINGSTARSIZE);
+  this.size = randomInRange(0.5, A1_SHOOTINGSTARSIZE);
   // this is used so the shooting stars arent constant
   this.waitTime = Date.now() + randomInRange(500, 3500);
   this.active = false;
@@ -111,9 +111,9 @@ function stopCoolStar() {
 function animate() {
   animationFrameId = requestAnimationFrame(animate);
 
-  let color = STARCOLOR;
+  let color = A1_STARCOLOR;
 
-  if (STARRPGMODE) {
+  if (A1_STARRPGMODE) {
     color = changeColor();
   }
 

@@ -1,32 +1,32 @@
-// ANIMATION 1
-var A1_STAR_NUM = 1000;
-var A1_SHOOTING_NUM = 5;
-var STARSIZE = 4;
-var SHOOTINGSTARSIZE = 3.5;
-var SHOOTINGSTARLENGTH = 120;
-var STARCOLOR = "#b1e2fdff";
-var SPACECOLOR = "#b1e2fdff";
-var STARRPGMODE = false;
-var SPACERPGMODE = false;
-
-// ANIMATION 2
-var PARTICLE_NUM = 2000;
-var PARTICLE_BASE_RADIUS = 0.5;
-var FL = 500;
-var DEFAULT_SPEED = 2;
-var BOOST_SPEED = 300;
-
-// Pointer
+// CANVAS RELATED
 var canvas = document.getElementById("particleCanvas");
 var context = canvas.getContext("2d");
 var width = window.screen.width;
 var height = window.screen.height;
 var canvasWidth, canvasHeight;
-var context;
+
+// ANIMATION 1
+var A1_STAR_NUM = 1000;
+var A1_SHOOTING_NUM = 5;
+var A1_STARSIZE = 4;
+var A1_SHOOTINGSTARSIZE = 3.5;
+var A1_SHOOTINGSTARLENGTH = 120;
+var A1_STARCOLOR = "#b1e2fdff";
+var A1_STARRPGMODE = false;
+
+// ANIMATION 2
+var A2_SPACERPGMODE = false;
+var A2_SPACECOLOR = "#b1e2fdff";
+var A2_PARTICLE_NUM = 2000;
+var A2_PARTICLE_BASE_RADIUS = 0.5;
+var A2_FL = 500;
+var A2_DEFAULT_SPEED = 2;
+var A2_BOOST_SPEED = 300;
+
 var centerX, centerY;
 var mouseX, mouseY;
-var speed = DEFAULT_SPEED;
-var targetSpeed = DEFAULT_SPEED;
+var speed = A2_DEFAULT_SPEED;
+var targetSpeed = A2_DEFAULT_SPEED;
 var particles = [];
 
 // Twinkle
