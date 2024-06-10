@@ -238,7 +238,7 @@ window.addEventListener("DOMContentLoaded", () => {
       label: "speed",
       step: 0.1,
       min: 0.5,
-      max: 3,
+      max: 5,
     })
     .on("change", (ev) => {
       A2_DEFAULT_SPEED = ev.value;

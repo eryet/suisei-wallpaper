@@ -128,7 +128,7 @@ window.wallpaperPropertyListener = {
           break;
 
         case "a2_space_fl":
-          A2_PARTICLE_FL = prop.value;
+          A2_FL = prop.value;
           break;
 
         case "a2_speed":
@@ -157,7 +157,7 @@ window.wallpaperPropertyListener = {
           break;
 
         case "a3_movement_scale":
-          A3_MOVEMENT_SCALE.z = prop.value;
+          A3_MOVEMENT_SCALE = prop.value;
           break;
 
         default:

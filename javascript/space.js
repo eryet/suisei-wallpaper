@@ -36,7 +36,7 @@ function animateCoolStar() {
     context.fillRect(0, 0, canvasWidth, canvasHeight);
     context.restore();
 
-    A2_DEFAULT_SPEED += (targetSpeed - A2_DEFAULT_SPEED) * 0.01;
+    // A2_DEFAULT_SPEED += (targetSpeed - A2_DEFAULT_SPEED) * 0.01;
 
     var halfPi = Math.PI * 0.5;
     var atan2 = Math.atan2;

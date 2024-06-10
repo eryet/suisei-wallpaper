@@ -27,7 +27,7 @@ var A2_PARTICLE_BASE_RADIUS = 0.5;
 var A2_FL = 500;
 var A2_DEFAULT_SPEED = 2;
 var A2_XY_SCALE = 1.25;
-var targetSpeed = 1;
+var targetSpeed = A2_DEFAULT_SPEED;
 var A2_BOOST_SPEED = 300;
 
 // ANIMATION 3
