@@ -1,15 +1,6 @@
 /* eslint-disable no-undef */
 // ANIMATION 1
 
-// these variable were in wallpaperengine.js
-// A1_STAR_NUM
-// A1_SHOOTING_NUM
-// A1_STARSIZE
-// A1_SHOOTINGSTARSIZE
-
-var width = window.screen.width;
-var height = window.screen.height;
-
 canvas.width = width;
 canvas.height = height;
 
@@ -50,7 +41,7 @@ ShootingStar.prototype.reset = function () {
   this.x = randomInRange(0, width * 1.5);
   this.y = 0;
   this.len = randomInRange(10, A1_SHOOTINGSTARLENGTH);
-  this.speed = randomInRange(6, 16);
+  this.speed = randomInRange(6, A1_SHOOTINGSTARSPEED);
   this.size = randomInRange(0.5, A1_SHOOTINGSTARSIZE);
   // this is used so the shooting stars arent constant
   this.waitTime = Date.now() + randomInRange(500, 3500);
@@ -65,6 +56,7 @@ ShootingStar.prototype.update = function () {
     if (this.x < 0 || this.y >= height) {
       this.reset();
     } else {
+      context.lineCap = A1_LINECAP;
       context.lineWidth = this.size;
       context.beginPath();
       context.moveTo(this.x, this.y);
@@ -90,7 +82,6 @@ function entitiesUpdate() {
     );
   }
 
-  // Add 5 shooting stars that just cycle.
   for (let i = 0; i < A1_SHOOTING_NUM; i++) {
     entities.push(new ShootingStar());
   }
@@ -98,7 +89,7 @@ function entitiesUpdate() {
 
 function changeColor() {
   if (HUE > 360) {
-    HUE == 0;
+    HUE = 0;
   }
 
   HUE = (HUE + 1) % 360;

@@ -17,7 +17,6 @@
     g.Parallax = f();
   }
 })(function () {
-  var define, module, exports;
   return (function e(t, n, r) {
     function s(o, u) {
       if (!n[o]) {

@@ -27,10 +27,12 @@ window.addEventListener("DOMContentLoaded", () => {
     animation: currentAnimationType,
     waifu_rgb: false,
     a1_star_color: A1_STARCOLOR,
+    a1_star_rgb: false,
+    a1_linecap: A1_LINECAP,
     a1_star_size: A1_STARSIZE,
     a1_star_number: A1_STAR_NUM,
-    a1_star_rgb: false,
     a1_shootingstar_number: A1_SHOOTING_NUM,
+    a1_shootingstar_speed: A1_SHOOTINGSTARSPEED,
     a1_shootingstar_length: A1_SHOOTINGSTARLENGTH,
     a2_space_particle_num: A2_PARTICLE_NUM,
     a2_space_base_radius: A2_PARTICLE_BASE_RADIUS,
@@ -38,11 +40,12 @@ window.addEventListener("DOMContentLoaded", () => {
     a2_space_color: A2_SPACECOLOR,
     a2_space_rgb: false,
     a3_timeout_label: "5 seconds timeout",
-    a3_timeout_label: "5 seconds timeout",
     a3_linecap: A3_LINECAP,
+    a3_color: `rgb(${A3_COLOR})`,
     a3_star_count: A3_STAR_COUNT,
     a3_star_size: A3_STAR_SIZE,
     a3_velocity: A3_VELOCITY.z,
+    a3_movement_scale: A3_MOVEMENT_SCALE,
   };
 
   const pane = new Pane({
@@ -58,6 +61,11 @@ window.addEventListener("DOMContentLoaded", () => {
     animation3.expanded = PARAMS.animation == 3;
     animation2.expanded = PARAMS.animation == 2;
     animation1.expanded = PARAMS.animation == 1;
+  };
+
+  const extractRGBValues = (rgbString) => {
+    let result = rgbString.replace(/^\s*rgb\(|\)\s*$/g, "").trim();
+    return result;
   };
 
   pane
@@ -124,6 +132,30 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     .on("change", (ev) => {
       A1_SHOOTINGSTARLENGTH = ev.value;
+      starUpdate();
+    });
+  animation1
+    .addBinding(PARAMS, "a1_linecap", {
+      label: "ss_linecap",
+      options: {
+        square: "square",
+        round: "round",
+        butt: "butt",
+      },
+    })
+    .on("change", (ev) => {
+      A1_LINECAP = ev.value;
+      starUpdate();
+    });
+  animation1
+    .addBinding(PARAMS, "a1_shootingstar_speed", {
+      label: "ss_speed",
+      step: 1,
+      min: 6,
+      max: 50,
+    })
+    .on("change", (ev) => {
+      A1_SHOOTINGSTARSPEED = ev.value;
       starUpdate();
     });
   animation1
@@ -224,6 +256,16 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
   animation3
+    .addBinding(PARAMS, "a3_color", {
+      label: "color",
+      picker: "inline",
+      expanded: true,
+    })
+    .on("change", (ev) => {
+      A3_COLOR = extractRGBValues(ev.value);
+    });
+
+  animation3
     .addBinding(PARAMS, "a3_star_count", {
       label: "star_count",
       step: 10,
@@ -255,6 +297,17 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     .on("change", (ev) => {
       A3_VELOCITY.z = ev.value;
+    });
+
+  animation3
+    .addBinding(PARAMS, "a3_movement_scale", {
+      label: "xy_scale",
+      step: 1,
+      min: 8,
+      max: 50,
+    })
+    .on("change", (ev) => {
+      A3_MOVEMENT_SCALE = ev.value;
     });
 
   pane.addBlade({

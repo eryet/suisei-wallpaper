@@ -146,7 +146,7 @@ function render() {
     context.beginPath();
     context.lineCap = A3_LINECAP;
     context.lineWidth = A3_STAR_SIZE * star.z * scale;
-    context.strokeStyle = `rgba(177,266,253,${star.opacity})`;
+    context.strokeStyle = `rgba(${A3_COLOR},${star.opacity})`;
 
     context.moveTo(star.x, star.y);
 
@@ -190,8 +190,8 @@ function movePointer(x, y) {
     let ox = x - pointerX,
       oy = y - pointerY;
 
-    A3_VELOCITY.tx = A3_VELOCITY.tx + (ox / 8) * scale * -1;
-    A3_VELOCITY.ty = A3_VELOCITY.ty + (oy / 8) * scale * -1;
+    A3_VELOCITY.tx = A3_VELOCITY.tx + (ox / A3_MOVEMENT_SCALE) * scale * -1;
+    A3_VELOCITY.ty = A3_VELOCITY.ty + (oy / A3_MOVEMENT_SCALE) * scale * -1;
   }
 
   pointerX = x;
