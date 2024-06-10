@@ -26,8 +26,8 @@ var A2_PARTICLE_NUM = 1000;
 var A2_PARTICLE_BASE_RADIUS = 0.5;
 var A2_FL = 500;
 var A2_DEFAULT_SPEED = 2;
-var speed = A2_DEFAULT_SPEED;
-var targetSpeed = A2_DEFAULT_SPEED;
+var A2_XY_SCALE = 1.25;
+var targetSpeed = 1;
 var A2_BOOST_SPEED = 300;
 
 // ANIMATION 3
@@ -36,7 +36,7 @@ var A3_STAR_COUNT = (window.innerWidth + window.innerHeight) / 8,
   A3_STAR_SIZE = 10,
   STAR_MIN_SCALE = 0.2,
   OVERFLOW_THRESHOLD = 50;
-var A3_MOVEMENT_SCALE = 20;
+var A3_MOVEMENT_SCALE = 80;
 var A3_DEFAULT_VELOCITY = { x: 0, y: 0, tx: 0, ty: 0, z: 0.001 };
 var A3_VELOCITY = { x: 0, y: 0, tx: 0, ty: 0, z: 0.001 };
 var A3_LINECAP = "round";

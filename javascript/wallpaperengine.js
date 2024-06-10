@@ -66,44 +66,103 @@ function starUpdate() {
 
 window.wallpaperPropertyListener = {
   applyUserProperties: function (properties) {
-    if (properties.shootingstarnumber) {
-      A1_SHOOTING_NUM = properties.shootingstarnumber.value;
-      starUpdate();
+    for (const [key, prop] of Object.entries(properties)) {
+      switch (key) {
+        case "animationtype":
+          startAnimation(prop.value);
+          break;
+
+        case "shootingstarnumber":
+          A1_SHOOTING_NUM = prop.value;
+          starUpdate();
+          break;
+
+        case "starsize":
+          A1_STARSIZE = prop.value;
+          starUpdate();
+          break;
+
+        case "shootingstarsize":
+          A1_SHOOTINGSTARSIZE = prop.value;
+          starUpdate();
+          break;
+
+        case "shootingstarlength":
+          A1_SHOOTINGSTARLENGTH = prop.value;
+          starUpdate();
+          break;
+
+        case "starnumber":
+          A1_STAR_NUM = prop.value;
+          starUpdate();
+          break;
+
+        case "waifurgbmode":
+          togglerRGBImage(prop.value);
+          break;
+
+        case "starrgbmode":
+          A1_STARRPGMODE = prop.value;
+          startAnimation(properties.animationtype.value);
+          break;
+
+        case "planetvisibility":
+          if (prop.value) {
+            planetElement.classList.remove("hidden");
+          } else {
+            planetElement.classList.add("hidden");
+          }
+          break;
+
+        case "a2_space_particle_num":
+          A2_PARTICLE_NUM = prop.value;
+          startAnimation(2);
+          break;
+
+        case "a2_space_rgb":
+          A2_SPACERPGMODE = prop.value;
+          break;
+
+        case "a2_space_base_radius":
+          A2_PARTICLE_BASE_RADIUS = prop.value;
+          break;
+
+        case "a2_space_fl":
+          A2_PARTICLE_FL = prop.value;
+          break;
+
+        case "a2_speed":
+          A2_DEFAULT_SPEED = prop.value;
+          break;
+
+        case "a2_xy_scale":
+          A2_XY_SCALE = prop.value;
+          break;
+
+        case "a3_linecap":
+          A3_LINECAP = prop.value;
+          break;
+
+        case "a3_star_count":
+          A3_STAR_COUNT = prop.value;
+          generate();
+          break;
+
+        case "a3_star_size":
+          A3_STAR_SIZE = prop.value;
+          break;
+
+        case "a3_velocity":
+          A3_VELOCITY.z = prop.value;
+          break;
+
+        case "a3_movement_scale":
+          A3_MOVEMENT_SCALE.z = prop.value;
+          break;
+
+        default:
+          break;
+      }
     }
-    if (properties.starsize) {
-      A1_STARSIZE = properties.starsize.value;
-      starUpdate();
-    }
-    if (properties.shootingstarsize) {
-      A1_SHOOTINGSTARSIZE = properties.shootingstarsize.value;
-      starUpdate();
-    }
-    if (properties.shootingstarlength) {
-      A1_SHOOTINGSTARLENGTH = properties.shootingstarlength.value;
-      starUpdate();
-    }
-    if (properties.starnumber) {
-      A1_STAR_NUM = properties.starnumber.value;
-      starUpdate();
-    }
-    if (properties.animationtype) {
-      startAnimation(properties.animationtype.value);
-    }
-    if (properties.waifurgbmode) {
-      togglerRGBImage(properties.waifurgbmode.value);
-    }
-    if (properties.starrgbmode) {
-      A1_STARRPGMODE = properties.starrgbmode.value;
-      startAnimation(properties.animationtype.value);
-    }
-    if (properties.planetvisibility) {
-      properties.planetvisibility.value
-        ? planetElement.classList.remove("hidden")
-        : planetElement.classList.add("hidden");
-    }
-    // if (properties.particlenum) {
-    //   A2_PARTICLE_NUM = properties.particlenum.value;
-    //   startAnimation(properties.animationtype.value);
-    // }
   },
 };

@@ -12,15 +12,10 @@ function toggleFullscreen() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  if (
-    typeof window.wallpaperPropertyListener !== "undefined" &&
-    typeof window.wallpaperPropertyListener.applyUserProperties ===
-      "function" &&
-    window.wallpaperPropertyListener.applyUserProperties.length > 0
-  ) {
+  if (typeof window.wallpaperRegisterAudioListener == "undefined") {
     startAnimation(STARTING_ANIMATION);
   } else {
-    document.querySelector("tp-dfwv").classList.add("hidden");
+    return;
   }
 
   const PARAMS = {
@@ -33,10 +28,13 @@ window.addEventListener("DOMContentLoaded", () => {
     a1_star_number: A1_STAR_NUM,
     a1_shootingstar_number: A1_SHOOTING_NUM,
     a1_shootingstar_speed: A1_SHOOTINGSTARSPEED,
+    a1_shootingstar_size: A1_SHOOTINGSTARSIZE,
     a1_shootingstar_length: A1_SHOOTINGSTARLENGTH,
     a2_space_particle_num: A2_PARTICLE_NUM,
     a2_space_base_radius: A2_PARTICLE_BASE_RADIUS,
+    a2_speed: A2_DEFAULT_SPEED,
     a2_space_fl: A2_FL,
+    a2_xy_scale: A2_XY_SCALE,
     a2_space_color: A2_SPACECOLOR,
     a2_space_rgb: false,
     a3_timeout_label: "5 seconds timeout",
@@ -51,8 +49,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const pane = new Pane({
     title: "Suisei Wallpaper Settings",
   });
-
-  console.log(pane);
 
   const updatePaneUi = () => {
     animation3.disabled = PARAMS.animation !== 3;
@@ -89,7 +85,6 @@ window.addEventListener("DOMContentLoaded", () => {
       expanded: true,
     })
     .on("change", (ev) => {
-      console.log(pane);
       A1_STARCOLOR = ev.value;
       starUpdate();
     });
@@ -159,6 +154,17 @@ window.addEventListener("DOMContentLoaded", () => {
       starUpdate();
     });
   animation1
+    .addBinding(PARAMS, "a1_shootingstar_size", {
+      label: "ss_size",
+      step: 0.1,
+      min: 1,
+      max: 5,
+    })
+    .on("change", (ev) => {
+      A1_SHOOTINGSTARSIZE = ev.value;
+      starUpdate();
+    });
+  animation1
     .addBinding(PARAMS, "a1_shootingstar_length", {
       label: "ss_length",
       step: 1,
@@ -182,6 +188,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   animation2
     .addBinding(PARAMS, "a2_space_color", {
+      label: "color",
       view: "color",
       picker: "inline",
       expanded: true,
@@ -225,6 +232,29 @@ window.addEventListener("DOMContentLoaded", () => {
     })
     .on("change", (ev) => {
       A2_FL = ev.value;
+    });
+  animation2
+    .addBinding(PARAMS, "a2_speed", {
+      label: "speed",
+      step: 0.1,
+      min: 0.5,
+      max: 3,
+    })
+    .on("change", (ev) => {
+      A2_DEFAULT_SPEED = ev.value;
+    });
+  pane.addBlade({
+    view: "separator",
+  });
+  animation2
+    .addBinding(PARAMS, "a2_xy_scale", {
+      label: "xy_scale",
+      step: 0.01,
+      min: 0.2,
+      max: 1.5,
+    })
+    .on("change", (ev) => {
+      A2_XY_SCALE = ev.value;
     });
 
   pane.addBlade({
@@ -304,7 +334,7 @@ window.addEventListener("DOMContentLoaded", () => {
       label: "xy_scale",
       step: 1,
       min: 8,
-      max: 50,
+      max: 200,
     })
     .on("change", (ev) => {
       A3_MOVEMENT_SCALE = ev.value;

@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 
 var resizeHandler, mouseMoveHandler;
-var debounceTimeout;
 
 function animateCoolStar() {
   var resize = function () {
@@ -37,7 +36,7 @@ function animateCoolStar() {
     context.fillRect(0, 0, canvasWidth, canvasHeight);
     context.restore();
 
-    speed += (targetSpeed - speed) * 0.01;
+    A2_DEFAULT_SPEED += (targetSpeed - A2_DEFAULT_SPEED) * 0.01;
 
     var halfPi = Math.PI * 0.5;
     var atan2 = Math.atan2;
@@ -49,15 +48,15 @@ function animateCoolStar() {
       var p = particles[i];
 
       p.pastZ = p.z;
-      p.z -= speed;
+      p.z -= A2_DEFAULT_SPEED;
 
       if (p.z <= 0) {
         randomizeParticle(p);
         continue;
       }
 
-      var cx = centerX - (mouseX - centerX) * 1.25;
-      var cy = centerY - (mouseY - centerY) * 1.25;
+      var cx = centerX - (mouseX - centerX) * A2_XY_SCALE;
+      var cy = centerY - (mouseY - centerY) * A2_XY_SCALE;
 
       var rx = p.x - cx;
       var ry = p.y - cy;
