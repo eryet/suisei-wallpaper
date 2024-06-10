@@ -1,19 +1,12 @@
-var STAR_COUNT = (window.innerWidth + window.innerHeight) / 8,
-  STAR_SIZE = 10,
-  STAR_MIN_SCALE = 0.2,
-  OVERFLOW_THRESHOLD = 50;
-
 let scale = 1;
 
 let stars = [];
 
 let pointerX, pointerY;
 
-let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
-
 function generate() {
-  stars = [];
-  for (let i = 0; i < STAR_COUNT; i++) {
+  cleanUp();
+  for (let i = 0; i < A3_STAR_COUNT; i++) {
     stars.push({
       x: 0,
       y: 0,
@@ -31,8 +24,8 @@ function placeStar(star) {
 function recycleStar(star) {
   let direction = "z";
 
-  let vx = Math.abs(velocity.x),
-    vy = Math.abs(velocity.y);
+  let vx = Math.abs(A3_VELOCITY.x),
+    vy = Math.abs(A3_VELOCITY.y);
 
   if (vx > 1 || vy > 1) {
     let axis;
@@ -44,9 +37,9 @@ function recycleStar(star) {
     }
 
     if (axis === "h") {
-      direction = velocity.x > 0 ? "l" : "r";
+      direction = A3_VELOCITY.x > 0 ? "l" : "r";
     } else {
-      direction = velocity.y > 0 ? "t" : "b";
+      direction = A3_VELOCITY.y > 0 ? "t" : "b";
     }
   }
 
@@ -98,19 +91,19 @@ function step() {
 }
 
 function update() {
-  velocity.tx *= 0.96;
-  velocity.ty *= 0.96;
+  A3_VELOCITY.tx *= 0.96;
+  A3_VELOCITY.ty *= 0.96;
 
-  velocity.x += (velocity.tx - velocity.x) * 0.8;
-  velocity.y += (velocity.ty - velocity.y) * 0.8;
+  A3_VELOCITY.x += (A3_VELOCITY.tx - A3_VELOCITY.x) * 0.8;
+  A3_VELOCITY.y += (A3_VELOCITY.ty - A3_VELOCITY.y) * 0.8;
 
   stars.forEach((star) => {
-    star.x += velocity.x * star.z;
-    star.y += velocity.y * star.z;
+    star.x += A3_VELOCITY.x * star.z;
+    star.y += A3_VELOCITY.y * star.z;
 
-    star.x += (star.x - width / 2) * velocity.z * star.z;
-    star.y += (star.y - height / 2) * velocity.z * star.z;
-    star.z += velocity.z;
+    star.x += (star.x - width / 2) * A3_VELOCITY.z * star.z;
+    star.y += (star.y - height / 2) * A3_VELOCITY.z * star.z;
+    star.z += A3_VELOCITY.z;
 
     // recycle when out of bounds
     if (
@@ -128,15 +121,15 @@ function update() {
 //   stars.forEach((star) => {
 //     context.beginPath();
 //     context.lineCap = "round";
-//     context.lineWidth = STAR_SIZE * star.z * scale;
+//     context.lineWidth = A3_STAR_SIZE * star.z * scale;
 //     context.strokeStyle =
 //       "rgba(255,255,255," + (0.5 + 0.5 * Math.random()) + ")";
 
 //     context.beginPath();
 //     context.moveTo(star.x, star.y);
 
-//     var tailX = velocity.x * 2,
-//       tailY = velocity.y * 2;
+//     var tailX = A3_VELOCITY.x * 2,
+//       tailY = A3_VELOCITY.y * 2;
 
 //     // stroke() wont work on an invisible line
 //     if (Math.abs(tailX) < 0.1) tailX = 0.5;
@@ -151,14 +144,14 @@ function update() {
 function render() {
   stars.forEach((star) => {
     context.beginPath();
-    context.lineCap = "round";
-    context.lineWidth = STAR_SIZE * star.z * scale;
+    context.lineCap = A3_LINECAP;
+    context.lineWidth = A3_STAR_SIZE * star.z * scale;
     context.strokeStyle = `rgba(177,266,253,${star.opacity})`;
 
     context.moveTo(star.x, star.y);
 
-    var tailX = velocity.x * 2,
-      tailY = velocity.y * 2;
+    var tailX = A3_VELOCITY.x * 2,
+      tailY = A3_VELOCITY.y * 2;
 
     // stroke() wont work on an invisible line
     if (Math.abs(tailX) < 0.1) tailX = 0.5;
@@ -178,7 +171,7 @@ function render() {
 //       0,
 //       star.x,
 //       star.y,
-//       STAR_SIZE * star.z * scale
+//       A3_STAR_SIZE * star.z * scale
 //     );
 
 //     gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
@@ -186,20 +179,10 @@ function render() {
 //     gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
 //     context.beginPath();
-//     context.arc(star.x, star.y, STAR_SIZE * star.z * scale, 0, 2 * Math.PI);
+//     context.arc(star.x, star.y, A3_STAR_SIZE * star.z * scale, 0, 2 * Math.PI);
 //     context.fillStyle = gradient;
 //     context.fill();
 //   });
-// }
-
-// phone
-
-// function onTouchMove(event) {
-//   touchInput = true;
-
-//   movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
-
-//   event.preventDefault();
 // }
 
 function movePointer(x, y) {
@@ -207,8 +190,8 @@ function movePointer(x, y) {
     let ox = x - pointerX,
       oy = y - pointerY;
 
-    velocity.tx = velocity.tx + (ox / 8) * scale * -1;
-    velocity.ty = velocity.ty + (oy / 8) * scale * -1;
+    A3_VELOCITY.tx = A3_VELOCITY.tx + (ox / 8) * scale * -1;
+    A3_VELOCITY.ty = A3_VELOCITY.ty + (oy / 8) * scale * -1;
   }
 
   pointerX = x;
@@ -227,8 +210,12 @@ function onMouseLeave() {
 function stopMotionStar() {
   cancelAnimationFrame(animationFrameId);
   animationFrameId = null;
+  A3_VELOCITY = A3_DEFAULT_VELOCITY;
+  cleanUp();
+}
+
+function cleanUp() {
   stars = [];
-  velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 };
   window.removeEventListener("resize", resize);
   document.removeEventListener("mousemove", onMouseMove);
   document.removeEventListener("mouseleave", onMouseLeave);

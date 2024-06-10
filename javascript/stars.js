@@ -97,10 +97,13 @@ function entitiesUpdate() {
 }
 
 function changeColor() {
-  let hue = 0;
-  hue = (hue + 1) % 360;
+  if (HUE > 360) {
+    HUE == 0;
+  }
 
-  return "hsl(" + hue + ", 100%, 50%)";
+  HUE = (HUE + 1) % 360;
+
+  return "hsl(" + HUE + ", 100%, 50%)";
 }
 
 function stopCoolStar() {

@@ -6,7 +6,6 @@
 var planetElement = document.getElementById("planet");
 
 function startAnimation(animationType) {
-  // If the previous animation was 'animateCoolStar', stop it.
   if (currentAnimationType === 1) {
     stopCoolStar();
   }
@@ -32,15 +31,10 @@ function startAnimation(animationType) {
       generate();
       step();
       break;
-    // case 3:
-    //   drawTwinkle();
-    //   break;
     default:
-      // Invalid animationType, do nothing
       break;
   }
 
-  // Update the currentAnimationType
   currentAnimationType = animationType;
 }
 

@@ -2,7 +2,6 @@
 
 var resizeHandler, mouseMoveHandler;
 var debounceTimeout;
-var mouseX, mouseY;
 
 function animateCoolStar() {
   var resize = function () {
